@@ -92,9 +92,8 @@ class Wechat extends Component
 
     /**
      * 准备授权调用
-     * @param null $redirectUrl set the default redirect Url from config
+     * @param null|string $redirectUrl set the default redirect Url from config
      * @param null|Request $request
-     * @return $this
      */
     public function prepareOauth($redirectUrl = null, $request = null)
     {
@@ -109,13 +108,16 @@ class Wechat extends Component
 
     /**
      * 授权后 回调 action 内调用
+     * @param null|function $callBack
      */
-    public function oauth()
+    public function oauth($callBack = null)
     {
         $oauth = $this->getOfficialAccount()->oauth;
         $user = $oauth->user();
         \Yii::$app->session->set($this->key_prefix . 'user_info', $user);
         $this->id = $user->getId();
+        if (is_callable($callBack))
+            call_user_func($callBack);
         return \Yii::$app->response->redirect(Url::previous())->send();
     }
 
