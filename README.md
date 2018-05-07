@@ -6,11 +6,11 @@
 
 Thank you. 
 
-###Installation
+### Installation
 
 ``composer require myshero/yii2-easy-wechat --dev``
 
-###Configuration
+### Configuration
 
 YII2 配置添加 `wechat` 组件
 
@@ -45,6 +45,7 @@ YII2 配置添加 `wechat` 组件
     // ...
 ],
 ````
+
 
 ### Usage
 
@@ -82,7 +83,8 @@ public function actionOauth()
 
 ```
 
-###More documentation
+
+### More documentation
 see [EasyWeChat Docs.](https://www.easywechat.com/)
 
 Thanks to `overtrue/wechat`
